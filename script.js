@@ -4,7 +4,7 @@ const surprise = document.getElementById("surprise");
 const music = document.getElementById("music");
 
 // ⏰ FECHA REAL (ajústala)
-const birthday = new Date("2026-01-20T00:00:00").getTime();
+const birthday = new Date("2026-01-10T00:00:00").getTime();
 
 const timer = setInterval(() => {
   const now = new Date().getTime();
@@ -97,4 +97,5 @@ verBtn.addEventListener("click", () => {
   document.getElementById("countdown-container").classList.add("hidden");
   letter.classList.remove("hidden");
 });
+
 
