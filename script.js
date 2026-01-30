@@ -4,7 +4,7 @@ const surprise = document.getElementById("surprise");
 const music = document.getElementById("music");
 
 // ⏰ FECHA REAL (ajústala)
-const birthday = new Date("2026-01-20T00:00:00").getTime();
+const birthday = new Date("2026-01-30T00:00:00").getTime();
 
 const timer = setInterval(() => {
   const now = new Date().getTime();
@@ -14,7 +14,7 @@ const timer = setInterval(() => {
     clearInterval(timer);
     countdownContainer.style.display = "none";
     surprise.classList.remove("hidden");
-setInterval(createFlower, 400);
+setInterval(createFlower, 800);
     confettiExplosion();
     return;
   }
@@ -37,11 +37,11 @@ function createFlower() {
   flower.className = "flower";
   flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
   flower.style.left = Math.random() * 100 + "vw";
-  flower.style.animationDuration = 6 + Math.random() * 4 + "s";
+  flower.style.animationDuration = 9 + Math.random() * 4 + "s";
   flower.style.fontSize = 18 + Math.random() * 20 + "px";
 
   document.body.appendChild(flower);
-  setTimeout(() => flower.remove(), 10000);
+  setTimeout(() => flower.remove(), 50000);
 }
 
 
@@ -68,13 +68,26 @@ const collageSection = document.getElementById("collage-section");
 
 verCollageBtn.addEventListener("click", () => {
   // Iniciar música al presionar el botón
-  music.currentTime = 3;
+  music.currentTime = 2;
   music.play().catch(() => {});
 letter.classList.add("hidden");
 
   // Mostrar collage + mapache
   collageSection.style.display = "flex";
 
+  // 🌸 FLORES EN COLLAGE (igual que las del inicio)
+  const collageFlowers = ["🌸","☁️ ","🌺"];
+  setInterval(() => {
+    const flower = document.createElement("div");
+    flower.className = "flower"; // reutiliza la misma clase para que caiga igual
+    flower.textContent = collageFlowers[Math.floor(Math.random() * collageFlowers.length)];
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.animationDuration = 8 + Math.random() * 4 + "s";
+    flower.style.fontSize = 18 + Math.random() * 20 + "px";
+
+    collageSection.appendChild(flower);
+    setTimeout(() => flower.remove(), 10000);
+  }, 400);
  
 });
 
